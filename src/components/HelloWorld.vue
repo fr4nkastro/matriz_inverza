@@ -61,6 +61,7 @@ export default {
           matriz[indexRows[0]][indexColumn]+= tempMatriz[indexRows[1]][indexColumn]
         }
       },
+      rowOperationDivided(){},
 
       showArray(matriz){
         var strOutput=""
@@ -74,6 +75,7 @@ export default {
         console.log(strOutput);
         return strOutput;
       },
+   
       calcular(){
           this.MatrizA=[[this.A11,this.A12],[this.A21,this.A22]];
           this.MatrizB=[[this.B11,this.B12],[this.B21,this.B22]];
