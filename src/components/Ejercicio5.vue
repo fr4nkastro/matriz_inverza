@@ -1,7 +1,8 @@
 <template>
-<div>
-  <div class="divpadre">
-
+<h2>Inversa de matriz</h2>
+<div class="container">
+ <div>
+ 
 
     <div class="divhijo">
         <table>
@@ -12,18 +13,19 @@
 
     </div >
      <div class="divhijo">
-        <table>
+        <table v-if="MatrizB!=null">
             <tr><td colspan="2">Matriz B</td></tr>
-            <tr><td><input type="number" v-model="B11"></td><td><input type="number" v-model="B12"></td></tr>
-            <tr><td><input type="number" v-model="B21"></td><td><input type="number" v-model="B22"></td></tr>
+            <tr><td><input type="number" v-model="this.MatrizB[0][0]"></td><td><input type="number" v-model="this.MatrizB[0][1]"></td></tr>
+            <tr><td><input type="number" v-model="this.MatrizB[1][0]"></td><td><input type="number" v-model="this.MatrizB[1][1]"></td></tr>
         </table>
 
     </div>
+    <input type="button" value="Calcular" @click="calcular">
  
 
   </div>
 <div>
-    <input type="button" value="Calcular" @click="calcular">
+    
 
 </div>
 </div>
@@ -45,23 +47,37 @@ export default {
         B21:0,
         B22:1,
 
-        MatrizA:null,
+        MatrizA:[null][null] ,
         MatrizB:null
       
      }
    },
     methods:{
-      rowOperation(matriz, indexRows, values ){
+      rowOperation(matriz, matrizb, indexRows, values ){
         var tempMatriz= matriz.slice();
+        var tempMatrizB= matrizb.slice();
         for (let indexColumn = 0; indexColumn < matriz.length; indexColumn++) {
-          matriz[indexRows[0]][indexColumn]= tempMatriz[indexRows[0]][indexColumn]*values[0]
-          matriz[indexRows[1]][indexColumn]= tempMatriz[indexRows[1]][indexColumn]*values[1]
+          matriz[indexRows[0]][indexColumn]= tempMatriz[indexRows[0]][indexColumn]*values[0];
+          matriz[indexRows[1]][indexColumn]= tempMatriz[indexRows[1]][indexColumn]*values[1];
+          matrizb[indexRows[0]][indexColumn]= tempMatrizB[indexRows[0]][indexColumn]*values[0];
+          matrizb[indexRows[1]][indexColumn]= tempMatrizB[indexRows[1]][indexColumn]*values[1];
         }
         for (let indexColumn = 0; indexColumn < matriz.length; indexColumn++) {
-          matriz[indexRows[0]][indexColumn]+= tempMatriz[indexRows[1]][indexColumn]
+          matriz[indexRows[0]][indexColumn]+= tempMatriz[indexRows[1]][indexColumn];
+          matrizb[indexRows[0]][indexColumn]+= tempMatrizB[indexRows[1]][indexColumn];
         }
       },
-      rowOperationDivided(){},
+      rowOperationDivided(matriz, matrizb){
+        for (let index = 0; index <  matriz.length; index++)  {
+          var value = matriz[index][index]
+          for (let index2 = 0; index2 < matriz.length; index2++) {
+          
+              matriz[index][index2]= matriz[index][index2]/value;
+              matrizb[index][index2]= matrizb[index][index2]/value;
+            
+          }
+        }
+      },
 
       showArray(matriz){
         var strOutput=""
@@ -93,20 +109,24 @@ export default {
                   }else if(Math.sign(this.MatrizA[indexRow][indexColumn]) ==-1 && Math.sign(this.MatrizA[indexRow+1][indexColumn])==-1){
                     signo=-1
                   }
-                  this.rowOperation(this.MatrizA,[indexRow, indexRow+1], [this.MatrizA[indexRow+1][indexColumn]*signo,this.MatrizA[indexRow][indexColumn]])
+                  this.rowOperation(this.MatrizA, this.MatrizB, [indexRow, indexRow+1], [this.MatrizA[indexRow+1][indexColumn]*signo,this.MatrizA[indexRow][indexColumn]])
                 }else if(indexRow== this.MatrizA.length-1){
                   if(Math.sign(this.MatrizA[indexRow][indexColumn]) ==1 && Math.sign(this.MatrizA[0][indexColumn])==1){
                     signo=-1
                   }else if(Math.sign(this.MatrizA[indexRow][indexColumn]) ==-1 && Math.sign(this.MatrizA[0][indexColumn])==-1){
                     signo=-1
                   }
-                  this.rowOperation(this.MatrizA,[indexRow, 0], [this.MatrizA[0][indexColumn]*signo, this.MatrizA[indexRow][indexColumn]])
+                  this.rowOperation(this.MatrizA, this.MatrizB, [indexRow, 0], [this.MatrizA[0][indexColumn]*signo, this.MatrizA[indexRow][indexColumn]])
                 }
               }
             }              
           }
+          this.rowOperationDivided(this.MatrizA, this.MatrizB);
 
         this.showArray(this.MatrizA);
+        console.log('');
+        this.showArray(this.MatrizB);
+
        }
 
     }
@@ -116,7 +136,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.divpadre{
+.container{
    display: flex;
    justify-content: center;
 }

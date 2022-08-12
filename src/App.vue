@@ -1,15 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld/>
+  <img alt="Vue logo" src="./assets/logoG6.jpeg">
+  <Ejercicio1/>
+   <Ejercicio2/>
+  <Ejercicio4/>
+  <Ejercicio5/>
+ 
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Ejercicio5 from './components/Ejercicio5.vue'
+import Ejercicio4 from './components/Ejercicio4.vue'
+import Ejercicio1 from './components/Ejercicio1.vue'
+import Ejercicio2 from './components/Ejercicio2.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Ejercicio4, Ejercicio1, Ejercicio5, Ejercicio2
   }
 }
 </script>
