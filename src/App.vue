@@ -5,6 +5,7 @@
   <Ejercicio4/>
   <Ejercicio5/>
   <Ejercicio3/>
+  <Ejercicio3_2/>
 </template>
 
 <script>
@@ -13,6 +14,7 @@ import Ejercicio4 from './components/Ejercicio4.vue'
 import Ejercicio1 from './components/Ejercicio1.vue'
 import Ejercicio2 from './components/Ejercicio2.vue'
 import Ejercicio3 from './components/Ejercicio3.vue'
+import Ejercicio3_2 from './components/Ejercicio3_2.vue'
 
 export default {
   name: 'App',
@@ -21,7 +23,8 @@ export default {
     Ejercicio1,
     Ejercicio5,
     Ejercicio2,
-    Ejercicio3
+    Ejercicio3,
+    Ejercicio3_2
 }
 }
 </script>

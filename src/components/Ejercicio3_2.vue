@@ -1,9 +1,7 @@
 <template>
-<h2>Producto escalar</h2>
+<h2>Potencia de matriz</h2>
 <div class="container">
   <div>
-
-
     <div class="divhijo">
         <table>
             <tr>
@@ -57,7 +55,7 @@ export default {
         B21:0,
         B22:0,
 
-        
+        potencia:1,
         MatrizA:[null][null] ,
         MatrizB:[null][null],
         MatrizC:[[null, null],[null, null]]
@@ -72,8 +70,13 @@ export default {
             for (let index = 0; index < this.MatrizA.length; index++) {
                 
                 for (let index2 = 0; index2 < this.MatrizA.length; index2++) {
-                    this.MatrizC[index][index2]= this.MatrizA[index][index2]*this.multiplo;
-                                //console.log(this.MatrizC[index][index2]*this.multiplo);
+
+                    for(let i = 0; i<this.multiplo;i++){
+                        this.potencia = this.potencia * this.MatrizA[index][index2];
+                    }
+                    this.MatrizC[index][index2] = this.potencia;
+                    this.potencia = 1;
+                    //this.MatrizC[index][index2]= this.MatrizA[index][index2]*this.multiplo;
 
                 }
             }
