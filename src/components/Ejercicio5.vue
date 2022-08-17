@@ -1,26 +1,27 @@
 <template>
-<h2>Inversa de matriz</h2>
+<h2 class="fw-bold text-uppercase text-primary" >Inversa de matriz</h2>
 <div class="container">
  <div>
  
 
-    <div class="divhijo">
+    <div class="border-start border-end  border-3 p-4">
         <table>
             <tr><td colspan="2">Matriz A</td></tr>
-            <tr><td><input type="number" v-model="A11"></td><td><input type="number" v-model="A12"></td></tr>
-            <tr><td><input type="number" v-model="A21"></td><td><input type="number" v-model="A22"></td></tr>
+            <tr><td><input class="form-control" type="number" v-model="A11"></td><td><input class="form-control" type="number" v-model="A12"></td></tr>
+            <tr><td><input class="form-control" type="number" v-model="A21"></td><td><input class="form-control" type="number" v-model="A22"></td></tr>
         </table>
 
     </div >
-     <div class="divhijo">
+     <div class="border-start border-end  border-3 p-4">
         <table v-if="MatrizB!=null">
             <tr><td colspan="2">Matriz B</td></tr>
-            <tr><td><input type="number" v-model="this.MatrizB[0][0]"></td><td><input type="number" v-model="this.MatrizB[0][1]"></td></tr>
-            <tr><td><input type="number" v-model="this.MatrizB[1][0]"></td><td><input type="number" v-model="this.MatrizB[1][1]"></td></tr>
+            <tr><td><input class="form-control" type="number" v-model="this.MatrizB[0][0]"></td><td><input class="form-control" type="number" v-model="this.MatrizB[0][1]"></td></tr>
+            <tr><td><input class="form-control" type="number" v-model="this.MatrizB[1][0]"></td><td><input class="form-control" type="number" v-model="this.MatrizB[1][1]"></td></tr>
         </table>
 
     </div>
-    <input type="button" value="Calcular" @click="calcular">
+    <input type="button" id="c-button" class="btn btn-info w-100 text-light"
+              style="border-radius: 10px; margin: 10px"  value="Calcular" @click="calcular">
  
 
   </div>
@@ -140,7 +141,9 @@ export default {
    display: flex;
    justify-content: center;
 }
-.divhijo{
-    margin: 10px;
+
+#c-button{
+    width: 20vw !important;
+
 }
 </style>

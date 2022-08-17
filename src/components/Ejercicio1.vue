@@ -1,37 +1,42 @@
 <template>
-<h2>Suma de matrices</h2>
+<h2 class="fw-bold text-uppercase text-primary" >Suma de matrices</h2>
 <div class="container">
   <div>
 
 
-    <div class="divhijo">
+    <div class="border-start border-end  border-3 p-4">
         <table>
+            
             <tr><td colspan="2">Matriz A</td></tr>
-            <tr><td><input type="number" v-model="A11"></td><td><input type="number" v-model="A12"></td></tr>
-            <tr><td><input type="number" v-model="A21"></td><td><input type="number" v-model="A22"></td></tr>
+            <tr><td><input class="form-control" type="number" v-model="A11"></td><td><input class="form-control" type="number" v-model="A12"></td></tr>
+            <tr><td><input class="form-control" type="number" v-model="A21"></td><td><input class="form-control" type="number" v-model="A22"></td></tr>
         </table>
 
     </div >
+    <br/>
 
-    <div class="divhijo">
+    <div class="border-start border-end  border-3 p-4">
         <table>
             <tr><td colspan="2">Matriz B</td></tr>
-            <tr><td><input type="number" v-model="B11"></td><td><input type="number" v-model="B12"></td></tr>
-            <tr><td><input type="number" v-model="B21"></td><td><input type="number" v-model="B22"></td></tr>
+            <tr><td><input class="form-control" type="number" v-model="B11"></td><td><input class="form-control" type="number" v-model="B12"></td></tr>
+            <tr><td><input class="form-control" type="number" v-model="B21"></td><td><input class="form-control" type="number" v-model="B22"></td></tr>
         </table>
 
     </div >
-
-     <div class="divhijo">
-        <table v-if="MatrizC[0][0]!=null">
+<br/>
+     <div  v-if="MatrizC[0][0]!=null" class="border-start border-end  border-3 p-4">
+        <table>
             <tr><td colspan="2">Matriz C</td></tr>
-            <tr><td><input type="number" v-model="this.MatrizC[0][0]"></td><td><input type="number" v-model="this.MatrizC[0][1]"></td></tr>
-            <tr><td><input type="number" v-model="this.MatrizC[1][0]"></td><td><input type="number" v-model="this.MatrizC[1][1]"></td></tr>
+            <tr><td><input class="form-control" type="number" v-model="this.MatrizC[0][0]"></td><td><input class="form-control" type="number" v-model="this.MatrizC[0][1]"></td></tr>
+            <tr><td><input class="form-control" type="number" v-model="this.MatrizC[1][0]"></td><td><input class="form-control" type="number" v-model="this.MatrizC[1][1]"></td></tr>
         </table>
+ 
+
 
     </div>
- 
-<input type="button" value="Calcular" @click="calculate">
+    <input id="c-button" class="btn btn-info w-100 text-light "
+              style="border-radius: 10px; margin: 10px" type="button" value="Calcular" @click="calculate">
+  
   </div>
 <div>
     
@@ -83,9 +88,17 @@ export default {
      display: flex;
    justify-content: center;
 }
-.divhijo{
-    margin: 10px;
-}
+
+
 <style>
+.container{
+     display: flex;
+   justify-content: center;
+}
+
+#c-button{
+    width: 20vw !important;
+
+}
 
 </style>
